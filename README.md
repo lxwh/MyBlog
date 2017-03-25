@@ -4,4 +4,4 @@
 2.新建index.html
 ## 如何预览
 
-点击https://lxwh.github.io/MyBlog/即可预览
+点击https://lxwh.github.io/MyBlog/ 即可预览
