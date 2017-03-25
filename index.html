@@ -1,9 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>我的个人博客-首页</title>
-</head>
+<head>  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>马贵龙的博客---首页</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+  <link rel="stylesheet" href="http://typo.sofi.sh/typo.css">
+  <style>
+    #content{
+      padding-left: 16px;
+    }
+    #content img{
+      max-width: 100%;
+    }
+  </style>
+  </head>
 <body>
-<div>这是首页内容</div>
+<div id="content">
+# 微信小程序那些事儿
+**龙轩先生**
+  
+> 横眉冷对千夫指，俯首甘为孺子牛。——鲁迅
+
+哇哈哈，我学会Markdown了。。。
+
+
+<img src="http://img2.imgtn.bdimg.com/it/u=2200879002,3430342992&fm=23&gp=0.jpg" alt="">
+</div>
+ <script>
+   var content = document.getElementById('content');
+   var markdown = content.innerHTML;
+   var html = marked(markdown);
+   content.innerHTML =html;
+   
+  </script>
+
 </body>
 </html>
