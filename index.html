@@ -17,15 +17,197 @@
   </head>
 <body>
 <div id="content">
-# 微信小程序那些事儿
-**龙轩先生**
-  
-> 横眉冷对千夫指，俯首甘为孺子牛。——鲁迅
+前端CSS规范文档
+初写，参考一些国内规范文档案例，有不足之处多提建议：
+1.命名规则
 
-哇哈哈，我学会Markdown了。。。
+为了团队之间更好的协调配合，标签语义化，让别人看懂你写的代码。一套语义化的命名规范很重要。
+1.1 CSS书写顺序
 
+（1）.位置属性(position, top, right, z-index, display, float等)
+（2）.大小(width, height, padding, margin)
+（3）.文字系列(font, line-height, letter-spacing, color, text-align等)
+（4）.背景(background, border等)
+（5）.其他(animation, transition等)
+css书写顺序演示
+1.2. CSS书写规范
 
-<img src="http://img2.imgtn.bdimg.com/it/u=2200879002,3430342992&fm=23&gp=0.jpg" alt="">
+（1）使用CSS缩写属性
+
+CSS有些属性是可以缩写的，比如padding,margin,font等等，这样精简代码同时又能提高用户的阅读体验。
+使用CSS缩写属性演示
+（2）去掉小数点前的“0”
+
+去掉小数点演示
+（3）简写命名
+
+让别人跟轻易看懂你写的命名含义
+简写命名
+（4）16进制颜色代码缩写
+
+有些代码可以缩写的，尽量缩写
+颜色代码缩写
+（5）连字符CSS选择器命名规范
+
+长名称或词组可以使用中横线来为选择器命名。
+颜色代码缩写
+（6）为选择器添加状态前缀
+
+有时候可以给选择器添加一个表示状态的前缀，让语义更明了，比如下图是添加了“.is-”前缀。
+颜色代码缩写
+2.分类方法
+
+构建一个大型网站的时候，如果全部的css都放在一个文件夹下。那管理会很不妥，组件和样式模块化会更便于管理规范化。
+（1）css目录结构
+
+css目录结构我划分为基础样式、组件样式、布局样式和模块样式。
+base文件      ：基础样式包含初始化样式和通用样式。
+components文件：组件样式包含通用的组件元件样式。
+layout文件    ：布局样式包含常用的顶部样式、头部样式、页脚样式和菜单样式。
+modules文件   ：模块样式指的是不同页面以@important的形式汇总合并css文件，减少Http请求。
+    |
+    |-base 基础样式
+    |   |- reset   初始化样式
+    |   |- common  通用样式
+    |
+    |-components  组件样式
+    |   |- ui-icon.css    ui图标样式
+    |   |- ui-button.css  按钮样式
+
+    |   |- ui-tip.css     提示样式
+    |   |-...
+    |
+    |-layout  布局样式
+    |  |-top.css    顶部样式
+    |  |-header.css    头部样式
+    |  |-footer.css    页脚样式
+    |  |-menu.css      菜单样式
+    |  |-...
+    |
+    |-modules  模块样式
+    |  |-homepage.css  首页页面样式汇总
+    |  |-lst
+    |     |-list_1.css
+    |     |-list_2.css
+（2）css类名分类
+
+布局（.grid）  ：将页面分割为几个大块，通常有头部、主体、主栏、侧栏、尾部等！
+模块（.module）：通常是一个语义化的可以重复使用的较大的整体！比如导航、登录、注册、各种列表、评论、搜索等！
+元件（.unit）  ：通常是一个不可再分的较为小巧的个体，通常被重复用于各种模块中！比如按钮、输入框、loading、图标等！
+功能（function）（.fn）：为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用！
+皮肤（.skin）：如果你需要把皮肤型的样式抽离出来，通常为文字色、背景色（图）、边框色等，非换肤型网站通常只提取文字色！非换肤型网站不可滥用此类！
+/* 重置 */
+div,p,ul,ol,li{margin:0;padding:0;}
+/* 布局 */
+.grid-sd{float:left;width:300px;}
+/* 模块 */
+.module-logo{width:200px;height:50px;}
+/* 元件 */
+.unit-btn{height:20px;border:1px solid #333;}
+/* 功能 */
+.fn-tac{text-align:center;}
+/* 皮肤 */
+.skin-fc,a.skin-fc:hover{color:#fff;}
+3.注意事项
+
+（1）注释
+
+代码是由人编写并维护的。请确保你的代码能够自描述、注释良好并且易于他人理解。好的代码注释能够传达    上下文关系和代码目的。不要简单地重申组件或 class 名称。
+
+对于较长的注释，务必书写完整的句子；对于一般性注解，可以书写简洁的短语。
+/* Bad example */
+/* Modal header */
+.modal-header {
+  ...
+}
+
+/* Good example */
+/* Wrapping element for .modal-title and .modal-close */
+.modal-header {
+  ...
+}
+（2）不要用没有语义化的标签
+
+不要以没有语义的标签作为选择器，这会造成大面积污染，除非你可以断定现在或将来你的这个选择器不会污染其他同类。
+（3）优化方面
+
+为了考虑减少Http的请求数量，我们可以考虑用sprites合并压缩图片，用gulp工具合并文件压缩代码。
+4.标签语义命名列表
+
+统一语义理解和命名
+布局（.grid-）
+语义	命名	简写
+文档	doc	doc
+头部	head	hd
+主体	body	bd
+尾部	foot	ft
+主栏	main	main
+主栏子容器	mainc	mainc
+侧栏	side	side
+侧栏子容器	sidec	sidec
+盒容器	wrap/box	wrap/box
+模块（.module-）、元件（.unit-）
+语义	命名	简写
+导航	nav	nav
+子导航	subnav	subnav
+面包屑	crumb	crumb
+菜单	menu	menu
+选项卡	tab	tab
+标题区	head/title	hd/title
+内容区	body/content	bd/content
+列表	list	list
+表格	table	tb
+表单	form	fm
+热点	hot	hot
+排行	top	top
+登录	login	log
+标志	logo	logo
+广告	advertise	ad
+搜索	search	search
+幻灯	slide	slide
+提示	tips	tips
+帮助	help	help
+新闻	news	news
+下载	download	down
+注册	regist	reg
+投票	vote	vote
+版权	copyright	cprt
+结果	result	rst
+标题	title	title
+按钮	button	btn
+输入	input	ipt
+功能（.fn-）
+语义	命名	简写
+浮动清除	clearboth	clearfix
+向左浮动	floatleft	fl
+向右浮动	floatright	fr
+内联块级	inlineblock	ib
+文本居中	textaligncenter	tac
+文本居右	textalignright	tar
+文本居左	textalignleft	tal
+垂直居中	verticalalignmiddle	vam
+溢出隐藏	overflowhidden	oh
+完全消失	displaynone	dn
+字体大小	fontsize	fs
+字体粗细	fontweight	fw
+皮肤（.skin-）
+语义	命名	简写
+字体颜色	fontcolor	fc
+背景	background	bg
+背景颜色	backgroundcolor	bgc
+背景图片	backgroundimage	bgi
+背景定位	backgroundposition	bgp
+边框颜色	bordercolor	bdc
+状态（.z-）
+语义	命名	简写
+选中	selected	sel
+当前	current	crt
+显示	show	show
+隐藏	hide	hide
+打开	open	open
+关闭	close	close
+出错	error	err
+不可用	disabled	dis
 </div>
  <script>
    var content = document.getElementById('content');
