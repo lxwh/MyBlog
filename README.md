@@ -179,8 +179,7 @@ Bob-->Alice: I am good thanks!
 
 再一次感谢您花费时间阅读这份欢迎稿，点击 <i class="icon-file"></i> (Ctrl+Alt+N) 开始撰写新的文稿吧！祝您在这里记录、阅读、分享愉快！
 
-作者 [@ghosert][3]     
-2016 年 07月 07日    
+   
 
 [^LaTeX]: 支持 **LaTeX** 编辑显示支持，例如：$\sum_{i=1}^n a_i=0$， 访问 [MathJax][4] 参考更多使用方法。
 
