@@ -31,3 +31,19 @@
 - Stage 2 - Draft（草案阶段）
 - Stage 3 - Candidate（候选人阶段）
 - Stage 4 - Finished（定案阶段）
+
+## 4、ECMAScript 的历史
+
+*   说到历史，看一下这些数据就知道了哈！
+    > ES6 开始》发布 [^15]年。
+    > 2015年6月，ECMAScript 6 正式通过，成为国际标准。
+ 
+ 
+
+
+
+
+
+
+
+
