@@ -24,18 +24,19 @@
 
 > 标准委员会,又称 TC39 委员会,任何人都可以向其提案，要求修改语言标准。一种新的语法从提案到变成正式标准，需要经历五个阶段。每个阶段的变动都需要由 TC39 委员会批准。
 
-##### 五个阶段是啥玩意呢？[请看下面哈]
+*   五个阶段是啥玩意呢？[请看下面哈]
 
-- Stage 0 - Strawman（展示阶段）
-- Stage 1 - Proposal（征求意见阶段）
-- Stage 2 - Draft（草案阶段）
-- Stage 3 - Candidate（候选人阶段）
-- Stage 4 - Finished（定案阶段）
+    > 1. Stage 0 - Strawman（展示阶段）
+    > 2. Stage 1 - Proposal（征求意见阶段）
+    > 3. Stage 2 - Draft（草案阶段）
+    > 4. Stage 3 - Candidate（候选人阶段）
+    > 5. Stage 4 - Finished（定案阶段）
 
 ## 4、ECMAScript 的历史
 
 *   说到历史，看一下这些数据就知道了哈！
-    > ES6 开始》发布 [^15]年。
+    
+    > ES6 开始》发布 [^15]年。
     > 2015年6月，ECMAScript 6 正式通过，成为国际标准。
  
  
