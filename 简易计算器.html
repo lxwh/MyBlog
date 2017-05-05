@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>简易计算器 + 思路详解</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: auto auto;
+        }
+        
+        td {
+            width: 150px;
+            line-height: 70px;
+        }
+        
+        .btn {
+            width: 150px;
+            line-height: 70px;
+            font-size: x-large;
+        }
+        
+        .btn_click {
+            width: 302px;
+            line-height: 70px;
+            font-size: x-large;
+        }
+        
+        .txt {
+            width: 600px;
+            line-height: 100px;
+            font-size: x-large;
+            text-align: right;
+        }
+    </style>
+    <script>
+        /*在网页加载时  给按钮添加点击事件*/
+        window.onload = function() { //定义数组  来接收用户按的数字和计算符号
+            var way_res = []; //获取按钮对象
+            var btn_txt = document.getElementsByClassName("btn"); //获取屏幕元素
+            var txt = document.getElementsByClassName("txt")[0]; //获取清空按钮和退格按钮
+            var btn_way = document.getElementsByClassName("btn_click");
+            for (var i = 0; i < btn_way.length; i++) {
+                btn_way[i].onclick = function() { //判断按钮
+                    if (this.value == "AC") {
+                        way_res = [];
+                        txt.value = "";
+                    } else { /* substr() 截断字符串 1.从那个位置开始   2.截取多少长度*/
+                        txt.value = txt.value.substr(0, txt.value.length - 1);
+                    }
+                }
+            } //给btn_txt  数组对象添加事件
+            for (var i = 0; i < btn_txt.length; i++) {
+                btn_txt[i].onclick = function() { /* this 指代的是当前事件的执行对象*/
+                    /*按完键将值传给屏幕*/
+                    /*判断是否为数字*/
+                    if (txt.value == "" && this.value == ".") {
+                        txt.value = "0.";
+                    } else {
+                        if (!isNaN(this.value) || this.value == ".") { /*用户输入的是数字或者点的情况*/
+                            /*indexOf() 用来查找字符  如果有返回当前位置  如果没有返回-1*/
+                            if (txt.value.indexOf(".") != -1) { /*有点存在的情况*/
+                                if (this.value != ".") { /*当前按得不是点，进行拼接*/
+                                    txt.value += this.value;
+                                }
+                            } else { /*没点存在直接拼接*/
+                                txt.value += this.value;
+                            }
+                        } else { /*是符号的情况*/
+                            //先存值  在清屏
+                            if (this.value != "=") { /*是符号但不为等号的情况*/
+                                way_res[way_res.length] = txt.value; //存符号
+                                way_res[way_res.length] = this.value; //清屏
+                                txt.value = "";
+                            } else { /*是等号的情况*/
+                                way_res[way_res.length] = txt.value; //eval()方法   专门用来计算表达式的值
+                                txt.value = eval(way_res.join("")); //计算完成之后将数组清空
+                                way_res = [];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="4"><input class="txt" type="text" disabled/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input class="btn_click" type="button" value="AC" /></td>
+            <td colspan="2"><input class="btn_click" type="button" value="DEL" /></td>
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="7" /></td>
+            <td><input class="btn" type="button" value="8" /></td>
+            <td><input class="btn" type="button" value="9" /></td>
+            <td><input class="btn" type="button" value="*" /></td>
+
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="4" /></td>
+            <td><input class="btn" type="button" value="5" /></td>
+            <td><input class="btn" type="button" value="6" /></td>
+            <td><input class="btn" type="button" value="/" /></td>
+
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="1" /></td>
+            <td><input class="btn" type="button" value="2" /></td>
+            <td><input class="btn" type="button" value="3" /></td>
+            <td><input class="btn" type="button" value="-" /></td>
+
+        </tr>
+        <tr>
+            <td><input class="btn" type="button" value="0" /></td>
+            <td><input class="btn" type="button" value="." /></td>
+            <td><input class="btn" type="button" value="+" /></td>
+            <td><input class="btn" type="button" value="=" /></td>
+
+        </tr>
+
+    </table>
+</body>
+
+</html>
